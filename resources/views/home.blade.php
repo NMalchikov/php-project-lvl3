@@ -29,7 +29,7 @@
                             <a class="nav-link active" href="https://lvl3-php.herokuapp.com/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="https://lvl3-php.herokuapp.com//urls">Сайты</a>
+                            <a class="nav-link " href="https://lvl3-php.herokuapp.com/urls">Сайты</a>
                         </li>
                     </ul>
                 </div>
