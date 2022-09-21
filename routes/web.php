@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Route::get('/', function () {
+    return view('home');
+});
+
 Route::post('/urls', function () {
-    return view('welcome');
+    return view('analyzerPage');
 });
