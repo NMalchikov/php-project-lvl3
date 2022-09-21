@@ -4,9 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="fvU1690E1newrRgN4EWQpoNFJgCqlPWh0AJ7uAOH">
-
         <title>Анализатор страниц</title>
 
         <!-- Scripts -->
@@ -46,7 +43,8 @@
                 <h1 class="display-3">Анализатор страниц</h1>
                 <p class="lead">Бесплатно проверяйте сайты на SEO пригодность</p>
                 <form action="https://lvl3-php.herokuapp.com/urls" method="post" class="d-flex justify-content-center">
-                    <input type="hidden" name="_token" value="fvU1690E1newrRgN4EWQpoNFJgCqlPWh0AJ7uAOH">                    <input type="text" name="url[name]" value="" class="form-control form-control-lg" placeholder="https://www.example.com">
+                    @csrf                 
+                    <input type="text" name="url[name]" value="" class="form-control form-control-lg" placeholder="https://www.example.com">
                     <input type="submit" class="btn btn-primary btn-lg ms-3 px-5 text-uppercase mx-3" value="Проверить">
                 </form>
             </div>
