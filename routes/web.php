@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [MainController::class, 'home']);
 
-Route::get('/urls', function () {
-    return view('analyzerPage');
-});
+Route::post('/urls', [MainController::class, 'analyzerPage']);
 
 Route::get('/urls{id}', function ($id) {
     return view('pageSite');

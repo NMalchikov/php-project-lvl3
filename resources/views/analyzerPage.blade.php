@@ -1,41 +1,40 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout')
+@section('main_content')
+<main class="flex-grow-1">
+                            <div class="container-lg">
+        <h1 class="mt-5 mb-3">Сайты</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover text-nowrap">
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Последняя проверка</th>
+                    <th>Код ответа</th>
+                </tr>
+                                    <tr>
+                        <td>1</td>
+                        <td><a href="https://lvl3-php.herokuapp.com/urls/{id}">name</a></td>
+                        <td> </td>
+                        <td></td>
+                    </tr>
+                            </table>
+            <nav class="d-flex justify-items-center justify-content-between">
+        <div class="d-flex justify-content-between flex-fill d-sm-none">
+            <ul class="pagination">
+                
+                                    <li class="page-item disabled" aria-disabled="true">
+                        <span class="page-link">pagination.previous</span>
+                    </li>
+                                    <li class="page-item">
+                        <a class="page-link" href="https://lvl3-php.herokuapp.com/urls?page=2" rel="next">pagination.next</a>
+                    </li>
+                            </ul>
+        </div>
 
-
-
-        <title>Анализатор страниц</title>
-
-        <!-- Scripts -->
-        <script src="https://lvl3-php.herokuapp.com/js/app.js" defer></script>
-
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-        <!-- Styles -->
-        <link href="https://lvl3-php.herokuapp.com/css/app.css" rel="stylesheet">
-    </head>
-    <html>
-    <body class="min-vh-100 d-flex flex-column">
-        <header class="flex-shrink-0">
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark px-3">
-                <a class="navbar-brand" href="https://lvl3-php.herokuapp.com">Анализатор страниц</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link " href="https://lvl3-php.herokuapp.com">Главная</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="https://lvl3-php.herokuapp.com/urls">Сайты</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-</html>
+        <div class="d-none flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-between">
+        </div>
+    </nav>
+        </div>
+    </div>
+        </main>
+@endsection
