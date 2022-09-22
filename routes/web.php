@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::post('/urls', function () {
+Route::get('/urls', function () {
     return view('analyzerPage');
+});
+
+Route::get('/urls{id}', function ($id) {
+    return view('pageSite');
 });
