@@ -38,7 +38,6 @@
                 </div>
             </nav>
         </header>
-        @yield('errors')
         @yield('main_content')
    
     </body>
