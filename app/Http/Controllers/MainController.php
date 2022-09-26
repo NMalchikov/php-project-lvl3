@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Url;
 
 class MainController extends Controller
 {
@@ -11,7 +12,12 @@ class MainController extends Controller
     }
     public function analyzerPage(Request $request) {
         $valid = $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|url|max:255'
         ]);
+        $url = new Url();
+        $url->name = $request->input('url[name]');
+        $url->name = $request->input('created_at');
+        $url->save();
+        return redirect()->route('/url{id}');
     }
 }
