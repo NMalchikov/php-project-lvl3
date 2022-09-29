@@ -38,7 +38,9 @@
                 </div>
             </nav>
         </header>
-        @yield('main_content')
+<main class="flex-grow-1">
+        @yield('content')
+</main>
    
     </body>
 </html>

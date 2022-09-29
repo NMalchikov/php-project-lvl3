@@ -1,6 +1,6 @@
 @extends('layout')
 @section('main_content')
-<main class="flex-grow-1">
+
                             <div class="container-lg">
         <h1 class="mt-5 mb-3">Сайты</h1>
         <div class="table-responsive">
@@ -12,12 +12,8 @@
                     <th>Код ответа</th>
                 </tr>
                                     <tr>
-                        <td>1</td>
-                        <td><a href="https://lvl3-php.herokuapp.com/urls/{id}">name</a></td>
-                        <td> </td>
-                        <td></td>
                     </tr>
-                            </table>
+                    </table>
             <nav class="d-flex justify-items-center justify-content-between">
         <div class="d-flex justify-content-between flex-fill d-sm-none">
             <ul class="pagination">
@@ -36,5 +32,5 @@
     </nav>
         </div>
     </div>
-        </main>
+
 @endsection
