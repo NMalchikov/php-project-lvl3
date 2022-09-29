@@ -1,6 +1,6 @@
 @extends('layout')
 @section('main_content')
-        <main class="flex-grow-1">
+
         @if($errors->any())
         @if ($errors->url()) 
         <div class="alert alert-danger">'Некорректный URL'</div>
@@ -20,6 +20,6 @@
             </div>
         </div>
     </div>
-        </main>
+
 @endsection
  
