@@ -18,8 +18,8 @@ use App\Http\Controllers\MainController;
 
 Route::get('/', [MainController::class, 'home']);
 
-Route::post('/urls', [MainController::class, 'analyzerPage']);
+Route::post('urls', [MainController::class, 'analyzerPage']);
 
-Route::get('/urls{id}', function ($id) {
+Route::get('urls{id}', function ($id) {
     return view('pageSite');
 });

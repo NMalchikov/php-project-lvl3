@@ -2,10 +2,9 @@
 @section('main_content')
         <main class="flex-grow-1">
         @if($errors->any())
-        <div class="alert alert-danger" role="alert">
-        @foreach($errors->all() as $error) 
-            Некорректный URL
-            @endforeach
+        @if ($errors->url()) 
+        <div class="alert alert-danger">'Некорректный URL'</div>
+        @endif
         </div>
         @endif
         <div class="container-lg mt-3">
