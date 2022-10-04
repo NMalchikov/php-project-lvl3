@@ -40,8 +40,7 @@ class UrlController extends Controller
         $urlNormalized = implode('', [$urlParts['scheme'], '://', $urlParts['host']]);
 
         $url = DB::table('urls')
-            ->where('name', $urlNormalized)
-            ->first();
+            ->where('name', $urlNormalized);
 
         if ($url) {
             $id = $url->id;
