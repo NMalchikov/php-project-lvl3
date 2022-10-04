@@ -8,38 +8,30 @@
         <meta name="csrf-token" content="lO7PVbnALTEvE52J6okGrHC2nOtuwraD5TUdY1yZ">
 
         <title>Анализатор страниц</title>
-
-        <!-- Scripts -->
-        <script src="https://php-page-analyzer-ru.hexlet.app/js/app.js" defer></script>
-
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-        <!-- Styles -->
-        <link href="https://php-page-analyzer-ru.hexlet.app/css/app.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </head>
     <body class="min-vh-100 d-flex flex-column">
         <header class="flex-shrink-0">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark px-3">
-                <a class="navbar-brand" href="https://lvl3-php.herokuapp.com">Анализатор страниц</a>
+                <a class="navbar-brand" href="{{ route('home') }}">Анализатор страниц</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link " href="https://lvl3-php.herokuapp.com">Главная</a>
+                            <a class="nav-link " href="/">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="https://lvl3-php.herokuapp.com/urls">Сайты</a>
+                            <a class="nav-link active" href='urls'>Сайты</a>
                         </li>
                     </ul>
                 </div>
             </nav>
         </header>
-<main class="flex-grow-1">
-        @yield('content')
+        <main class="flex-grow-1">
+        @yield('main_content')
 </main>
    
     </body>

@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\UrlController;
+use App\Http\Controllers\UrlCheckController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,8 @@ use App\Http\Controllers\MainController;
 
 
 
-Route::get('/', [MainController::class, 'home']);
+Route::view('/', 'home')->name('home');
 
-Route::post('urls', [MainController::class, 'analyzerPage']);
+Route::resource('urls', UrlController::class)->only('index', 'store', 'show');
 
-Route::get('urls{id}', function ($id) {
-    return view('pageSite');
-});
+Route::resource('urls.checks', UrlCheckController::class)->only('store');
