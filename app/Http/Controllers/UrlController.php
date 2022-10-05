@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\View\View;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+
 class UrlController extends Controller
 {
     public function index()
