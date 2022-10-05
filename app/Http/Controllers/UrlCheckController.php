@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use DiDom\Document;
-
+use Illuminate\Support\Str;
 
 class UrlCheckController extends Controller
 {
@@ -40,7 +40,7 @@ class UrlCheckController extends Controller
                     ->error();
             }
         
-                return redirect()->route('urls.show', $id);
+                return redirect()->route('urls.show', ['url' => $id]);
             }
 }
 

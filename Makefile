@@ -1,17 +1,21 @@
-install:
+start:
+	php artisan serve
+setup:
 	composer install
-gendiff:
-	./bin/gendiff -h
+	cp -n .env.example .env
+	php artisan key:gen --ansi
+	php artisan migrate
+	php artisan db:seed
+	npm ci
+	npm run build
+deploy:
+	git push heroku
+
 lint:
-	composer exec --verbose phpcs -- --standard=PSR12 src tests
-	composer exec --verbose phpstan -- --level=8 analyse src tests
+	composer exec phpcs -- --standard=PSR12 app routes tests
 
 lint-fix:
-	composer exec --verbose phpcbf -- --standard=PSR12 src tests
-
-test:
-	composer exec --verbose phpunit tests
-
+	composer phpcbf app routes tests database lang
 test-coverage:
 	composer exec --verbose phpunit tests -- --coverage-clover ./build/logs/clover.xml
 
