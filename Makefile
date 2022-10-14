@@ -17,7 +17,7 @@ lint-fix:
 	composer phpcbf app routes tests database lang
 test-coverage:
 	composer exec --verbose phpunit tests -- --coverage-clover ./build/logs/clover.xml
-
+	
 validate:
 	composer validate
 install:
