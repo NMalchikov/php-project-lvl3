@@ -34,7 +34,7 @@
                     <th>description</th>
                     <th>Дата создания</th>
                 </tr>
-                @foreach($checks as $check)
+                @foreach($urlChecks as $check)
                     <tr>
                         <td>{{ $check->id }}</td>
                         <td>{{ $check->status_code }}</td>
