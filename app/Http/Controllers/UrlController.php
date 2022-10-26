@@ -64,7 +64,7 @@ class UrlController extends Controller
         $checks = DB::table('url_checks')
             ->where('url_id', $id)
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(15);
 
         return view('show', compact('url', 'checks'));
     }
