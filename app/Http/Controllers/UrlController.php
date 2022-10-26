@@ -46,7 +46,7 @@ class UrlController extends Controller
                     'created_at' => Carbon::now()
                 ]
             );
-            flash('URL успешно добавлен')->success();
+            flash('Страница успешно добавлена')->success();
             return redirect()
                 ->route('urls.show', ['url' => $urlId]);
         }
