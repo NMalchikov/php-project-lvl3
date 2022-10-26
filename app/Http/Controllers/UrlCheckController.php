@@ -37,6 +37,7 @@ class UrlCheckController extends Controller
                 'description' => $description,
                 ]
             );
+            flash(__('Страница успешно проверена'))->success();
         } catch (\Exception $e) {
             flash($e->getMessage())
                 ->error();
