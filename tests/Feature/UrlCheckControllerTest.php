@@ -4,49 +4,46 @@ namespace Tests\Feature;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 use Tests\TestCase;
+use Exception;
 
 class UrlCheckControllerTest extends TestCase
 {
-    private int $urlId;
-    private string $urlName;
+    private array $data;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
-
-        $this->urlName = 'https://example.com';
-
-        $this->urlId = DB::table('urls')->insertGetId([
-            'name' => $this->urlName,
-            'created_at' => now()
-        ]);
+        $this->data = [
+            'name' => 'https://hexlet.io',
+            'created_at' => Carbon::now(),
+        ];
     }
 
-    public function testStore(): void
+    public function testStore()
     {
-        $fakeHtmlFilePath = __DIR__ . '/../fixtures/fake_page.html';
-        $fakePageHtml = file_get_contents($fakeHtmlFilePath);
-
-        if (!$fakePageHtml) {
-            throw new \Exception("Non-existing  {$fakeHtmlFilePath}");
+        $id = DB::table('urls')->insertGetId($this->data);
+        $pathToHtml = __DIR__ . '/../Fixtures/fake.html';
+        $content = file_get_contents($pathToHtml);
+        if ($content === false) {
+            throw new Exception('Something wrong with fixtures file');
         }
 
-        Http::fake([
-            $this->urlName => Http::response($fakePageHtml, 200, [])
-        ]);
+        Http::fake([$this->data['name'] => Http::response($content, 200)]);
 
-        $response = $this->post(route('urls.checks.store', $this->urlId));
+        $expectedData = [
+            'url_id' => $id,
+            'status_code' => 200,
+            'h1' => 'header',
+            'title' => 'example',
+            'description' => 'description',
+            'created_at' => Carbon::now()
+        ];
 
+        $response = $this->post(route('urls.checks.store', $id));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-
-        $this->assertDatabaseHas('url_checks', [
-            'url_id' => $this->urlId,
-            'status_code' => 200,
-            'h1' => 'H1',
-            'title' => 'Title',
-            'description' => 'Description',
-        ]);
+        $this->assertDatabaseHas('url_checks', $expectedData);
     }
 }
