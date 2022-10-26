@@ -17,10 +17,10 @@
                         <td>{{ $url->id }}</td>
                         <td><a href="{{ route('urls.show', [$url->id]) }}">{{ $url->name }}</a></td>
                         <td>
-                            {{ $checks[$url->id]->check_date ?? '' }}
+                            {{ $lastChecks[$url->id]->check_date ?? '' }}
                         </td>
                         <td>
-                            {{ $checks[$url->id]->status_code ?? '' }}
+                            {{ $lastChecks[$url->id]->status_code ?? '' }}
                         </td>
                     </tr>
                 @endforeach
