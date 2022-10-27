@@ -14,7 +14,7 @@
                 </tr>
                 @foreach($urls as $url)
                     <tr>
-                        <td>{{ $url->id }}</td>
+                        <td style="width: 5%"> {{ $url->id }}</td>
                         <td><a href="{{ route('urls.show', [$url->id]) }}">{{ $url->name }}</a></td>
                         <td>
                             {{ $lastChecks[$url->id]->created_at ?? '' }}
