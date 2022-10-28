@@ -63,7 +63,7 @@ class UrlController extends Controller
                 'created_at' => now()
             ]);
 
-            flash('URL успешно добавлен')
+            flash('Страница успешно добавлена')
                 ->success();
         }
 
