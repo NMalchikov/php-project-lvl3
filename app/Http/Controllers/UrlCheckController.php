@@ -38,7 +38,7 @@ class UrlCheckController extends Controller
                 ]
             );
             flash(__('Страница успешно проверена'))->success();
-        } catch (RequestException | HttpClientException | ConnectionException $exception) {
+        } catch (RequestException | HttpClientException | ConnectionException) {
             flash(__('Произошла ошибка при проверке'))->error();
         }
 
