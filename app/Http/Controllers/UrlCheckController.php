@@ -38,9 +38,8 @@ class UrlCheckController extends Controller
                 ]
             );
             flash(__('Страница успешно проверена'))->success();
-        } catch (\Exception $e) {
-            flash($e->getMessage())
-                ->error();
+        } catch (RequestException | HttpClientException | ConnectionException $exception) {
+            flash(message: $exception->getMessage())->error();
         }
 
                 return redirect()->route('urls.show', ['url' => $id]);
