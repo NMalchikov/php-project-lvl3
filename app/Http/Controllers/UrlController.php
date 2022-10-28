@@ -12,47 +12,62 @@ use Illuminate\Support\Str;
 
 class UrlController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        $urls = DB::table('urls')->paginate(15);
-        $lastChecks = DB::table('url_checks')
-            ->orderBy('url_id')
-            ->latest()
-            ->distinct('url_id')
+        $urls = DB::table('urls')
+            ->orderBy('id')
+            ->paginate(15);
+
+        $urlIds = collect($urls->items())->pluck('id');
+
+        $checks = DB::table('url_checks')
+            ->select(['url_id', DB::raw('MAX(created_at) as check_date'), 'status_code'])
+            ->whereIn('url_id', $urlIds)
+            ->groupBy('url_id', 'status_code')
             ->get()
             ->keyBy('url_id');
-        return view('index', compact('urls', 'lastChecks'));
+
+        return view('index', compact('urls', 'checks'));
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $this->validate(
-            $request,
-            [
-                'url.name' => 'required|max:255|active_url'
-            ]
-        );
+        $validator = Validator::make($request->all(), [
+            'url.name' => 'required|url|max:255'
+        ]);
 
-        $parsedUrl = parse_url($request['url.name']);
-        $normalizedUrl = strtolower("{$parsedUrl['scheme']}://{$parsedUrl['host']}");
-
-        $url = DB::table('urls')->where('name', $normalizedUrl)->first();
-
-        if (is_null($url)) {
-            $urlId = DB::table('urls')->insertGetId(
-                [
-                    'name' => $normalizedUrl,
-                    'created_at' => Carbon::now()
-                ]
-            );
-            flash('Страница успешно добавлена')->success();
-            return redirect()
-                ->route('urls.show', ['url' => $urlId]);
+        if ($validator->fails()) {
+            return redirect()->route('welcome')
+                ->withErrors($validator)
+                ->withInput();
         }
-        flash('Страница уже существует')->info();
-            return redirect()
-                ->route('urls.show', ['url' => $url->id]);
+
+        $validated = $validator->validated();
+
+        $urlParts = parse_url(mb_strtolower($validated['url']['name']));
+        $urlNormalized = implode('', [$urlParts['scheme'], '://', $urlParts['host']]);
+
+        $url = DB::table('urls')
+            ->where('name', $urlNormalized)
+            ->first();
+
+        if ($url) {
+            $id = $url->id;
+
+            flash('Такой URL уже добавлен')
+                ->warning();
+        } else {
+            $id = DB::table('urls')->insertGetId([
+                'name' => $urlNormalized,
+                'created_at' => now()
+            ]);
+
+            flash('URL успешно добавлен')
+                ->success();
+        }
+
+        return redirect()->route('urls.show', $id);
     }
 
     public function show(int $id)
