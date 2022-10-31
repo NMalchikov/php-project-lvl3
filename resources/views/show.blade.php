@@ -5,7 +5,7 @@
         <div class="container-lg">
             <h1 class="mt-5 mb-3">Сайт: {{ $url->name }}</h1>
             <div class="table-responsive">
-                <table class="table table-bordered table-hover text-nowrap data-test='urls'">
+                <table class="table table-bordered table-hover text-nowrap data-test="urls"">
                     <tr>
                         <td>ID</td>
                         <td>{{ $url->id }}</td>
@@ -25,7 +25,7 @@
                 @csrf
                 <input type="submit" class="btn btn-primary mb-3" value="Запустить проверку">
             </form>
-            <table class="table table-bordered table-hover text-nowrap data-test='urls'">
+            <table class="table table-bordered table-hover text-nowrap data-test="urls"">
                 <tr>
                     <th>ID</th>
                     <th>Код ответа</th>
