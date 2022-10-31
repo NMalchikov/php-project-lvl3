@@ -6,8 +6,6 @@ setup:
 	php artisan key:gen --ansi
 	npm ci
 	npm run build
-deploy:
-	git push heroku
 lint:
 	composer exec phpcs -- --standard=PSR12 app routes tests
 
