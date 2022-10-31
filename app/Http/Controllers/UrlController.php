@@ -74,7 +74,7 @@ class UrlController extends Controller
     {
         $url = DB::table('urls')->find($id);
 
-        abort_unless($url, 404, 'Page not found');
+        abort_unless($url, 404, 'Некорректный URL');
 
         $checks = DB::table('url_checks')
             ->where('url_id', $id)
