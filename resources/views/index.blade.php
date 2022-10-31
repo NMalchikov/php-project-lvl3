@@ -5,7 +5,7 @@
         <h1 class="mt-5 mb-3">Сайты</h1>
         <div class="table-responsive">
 
-            <table class="table table-bordered table-hover text-nowrap" data-test="urls">
+            <table class="table table-bordered table-hover text-nowrap" data-test="checks">
                 <tr>
                     <th>ID</th>
                     <th>Имя</th>
