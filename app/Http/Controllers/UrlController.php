@@ -55,7 +55,7 @@ class UrlController extends Controller
         if ($url) {
             $id = $url->id;
 
-            flash('Такой URL уже добавлен')
+            flash('Страница уже существует')
                 ->warning();
         } else {
             $id = DB::table('urls')->insertGetId([
