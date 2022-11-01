@@ -38,7 +38,10 @@ class UrlController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('welcome')
+            flash('Некорректный URL')
+                ->error();
+
+            return redirect('urls')->route('welcome')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -73,8 +76,6 @@ class UrlController extends Controller
     public function show(int $id)
     {
         $url = DB::table('urls')->find($id);
-
-        abort_unless($url, 404, 'Некорректный URL');
 
         $checks = DB::table('url_checks')
             ->where('url_id', $id)
