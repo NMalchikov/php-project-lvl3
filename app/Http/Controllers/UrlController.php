@@ -31,7 +31,7 @@ class UrlController extends Controller
     }
 
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'url.name' => 'required|url|max:255'
@@ -41,9 +41,7 @@ class UrlController extends Controller
             flash('Некорректный URL')
                 ->error();
 
-            return redirect()->route('welcome')
-                ->withErrors($validator)
-                ->withInput();
+                return response()->view('welcome', [], 422);
         }
 
         $validated = $validator->validated();
