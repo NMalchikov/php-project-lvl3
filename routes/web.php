@@ -19,7 +19,6 @@ use App\Http\Controllers\UrlCheckController;
 
 Route::view('/', 'welcome')->name('welcome');
 
-Route::view('url', 'urls')->name('urls');
 
 Route::resource('urls', UrlController::class)->only('index', 'store', 'show');
 
