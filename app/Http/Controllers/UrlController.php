@@ -30,18 +30,11 @@ class UrlController extends Controller
         return view('index', compact('urls', 'checks'));
     }
 
-
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'url.name' => 'required|url|max:255'
         ]);
-
-        if ($validator->fails()) {
-            flash('Некорректный URL')
-                ->error();
-                return response(view('welcome'), 422);
-        }
 
         $validated = $validator->validated();
 
@@ -52,6 +45,11 @@ class UrlController extends Controller
             ->where('name', $urlNormalized)
             ->first();
 
+        if ($validator->fails()) {
+                flash('Некорректный URL')
+                    ->error();
+                    return response(view('welcome'), 422);
+        }
         if ($url) {
             $id = $url->id;
 
