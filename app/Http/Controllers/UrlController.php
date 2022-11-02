@@ -36,6 +36,12 @@ class UrlController extends Controller
             'url.name' => 'required|url|max:255'
         ]);
 
+        if ($validator->fails()) {
+            flash('Некорректный URL')
+                ->error();
+                return response(view('welcome'), 422);
+        }
+
         $validated = $validator->validated();
 
         $urlParts = parse_url(mb_strtolower($validated['url']['name']));
@@ -45,11 +51,6 @@ class UrlController extends Controller
             ->where('name', $urlNormalized)
             ->first();
 
-        if ($validator->fails()) {
-                flash('Некорректный URL')
-                    ->error();
-                    return response(view('welcome'), 422);
-        }
         if ($url) {
             $id = $url->id;
 
