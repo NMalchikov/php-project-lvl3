@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+
 use Illuminate\Contracts\View\View;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -41,7 +42,7 @@ class UrlController extends Controller
             flash('Некорректный URL')
                 ->error();
 
-                return response(view('welcome'), 422)
+                return response(view('welcome'), 422);
         }
 
         $validated = $validator->validated();
