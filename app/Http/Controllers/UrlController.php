@@ -6,7 +6,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\View;
