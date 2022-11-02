@@ -41,7 +41,7 @@ class UrlController extends Controller
             flash('Некорректный URL')
                 ->error();
 
-                return back();
+                return response(View::make('welcome'), 422);
         }
 
         $validated = $validator->validated();
