@@ -18,12 +18,9 @@ class UrlCheckController extends Controller
     {
         $url = DB::table('urls')->find($id);
         abort_unless($url, 404);
-        // https://www.php.net/manual/en/language.exceptions.php
         try {
             $response = Http::get($url->name);
-            // https://github.com/Imangazaliev/DiDOM
             $document = new Document($response->body());
-            // https://laravel.com/docs/9.x/helpers#method-optional
             $h1 = optional($document->first('h1'))->text();
             $title = optional($document->first('title'))->text();
             $description = optional($document->first('meta[name=description]'))->getAttribute('content');
