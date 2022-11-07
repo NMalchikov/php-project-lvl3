@@ -29,12 +29,12 @@ class UrlCheckController extends Controller
             $description = optional($document->first('meta[name=description]'))->getAttribute('content');
             DB::table('url_checks')->insert(
                 [
-                'url_id' => $id,
-                'status_code' => $response->status(),
-                'h1' => $h1,
-                'title' => $title,
-                'description' => $description,
-                'created_at' => Carbon::now()
+                    'url_id' => $id,
+                    'status_code' => $response->status(),
+                    'h1' => $h1,
+                    'title' => $title,
+                    'description' => $description,
+                    'created_at' => Carbon::now()
                 ]
             );
             flash(__('Страница успешно проверена'))->success();
@@ -42,6 +42,6 @@ class UrlCheckController extends Controller
             flash(__('Произошла ошибка при проверке'))->error();
         }
 
-                return redirect()->route('urls.show', ['url' => $id]);
+        return redirect()->route('urls.show', ['url' => $id]);
     }
 }
