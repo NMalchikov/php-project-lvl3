@@ -7,3 +7,9 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9682f3d0f98610d1421e/test_coverage)](https://codeclimate.com/github/itaopro/php-project-lvl3/test_coverage)
 
 [https://lvl3-php.herokuapp.com](https://lvl3-php.herokuapp.com/)
+
+# Setup
+* git clone https://github.com/NMalchikov/php-project-lvl3.git
+* cd php-project-lvl3
+* make setup
+* make start
