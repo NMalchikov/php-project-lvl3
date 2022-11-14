@@ -7,7 +7,7 @@
 [https://lvl3-php.herokuapp.com](https://lvl3-php.herokuapp.com/)
 
 # Setup
-* git clone https://github.com/NMalchikov/php-project-lvl3.git
+* git clone https://github.com/itaopro/php-project-lvl3
 * cd php-project-lvl3
 * make setup
 * make start
