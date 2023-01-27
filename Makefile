@@ -17,3 +17,5 @@ test-coverage:
 
 validate:
 	composer validate
+validate:
+	composer validate
